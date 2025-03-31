@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('project_skill', function (Blueprint $table) {
-            $table->foreignId('project_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('skill_id')->constrained()->cascadeOnDelete();
+            $table->id(); 
+            $table->foreignId('project_id')->constrained('projects')->cascadeOnDelete();
+            $table->foreignId('skill_id')->constrained('skills')->cascadeOnDelete();
+            $table->timestamps(); 
         });
     }
 
