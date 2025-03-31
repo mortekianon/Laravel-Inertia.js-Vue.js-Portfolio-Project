@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SpecializationController extends Controller
 {
@@ -11,7 +12,7 @@ class SpecializationController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Specializations/index');
     }
 
     /**
