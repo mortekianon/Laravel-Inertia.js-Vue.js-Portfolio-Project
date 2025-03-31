@@ -20,7 +20,7 @@ class SpecializationController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Specializations/create');
     }
 
     /**
