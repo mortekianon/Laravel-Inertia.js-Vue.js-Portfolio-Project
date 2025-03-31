@@ -15,4 +15,11 @@ class Skill extends Model
     {
         return $this->belongsToMany(Project::class);
     }
+
+    public function specializations()
+    {
+        return $this->belongsToMany(Specialization::class, 'specialization_skill');
+    }
+
+
 }
