@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class SpecializationController extends Controller
@@ -28,9 +30,16 @@ class SpecializationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:255|unique:specializations,name'
+        ]);
+    
+        Specialization::create($validated);
+    
+        return redirect()->route('specializations.index')->with('success', 'Specialization successfully added!');
     }
-
+    
     /**
      * Display the specified resource.
      */

@@ -13,7 +13,6 @@ class Specialization extends Model
 
     public function skills()
     {
-
         return $this->belongsToMany(Skill::class, 'specialization_skill');
     }
 }

@@ -8,8 +8,8 @@
         </template>
 
         <div class="py-12">
-            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-                <form @submit.prevent="submit">
+            <div class="max-w-md mx-auto sm:px-6 lg:px-8 bg-white rounded-md">
+                <form @submit.prevent="submit" class="p-4">
                     <div>
                         <InputLabel for="name" value="Name" />
 
@@ -32,7 +32,7 @@
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
                         >
-                            Add Specialization
+                            Add
                         </PrimaryButton>
                     </div>
                 </form>
@@ -54,6 +54,6 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("specialization.store"));
+    form.post(route("specializations.store"));
 };
 </script>
