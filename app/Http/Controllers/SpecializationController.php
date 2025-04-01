@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SpecializationResource;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -14,7 +15,8 @@ class SpecializationController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Specializations/index');
+        $specializations = SpecializationResource::collection(Specialization::all());
+        return Inertia::render('Specializations/index', compact('specializations'));
     }
 
     /**
