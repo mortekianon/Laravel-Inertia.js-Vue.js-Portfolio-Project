@@ -12,7 +12,6 @@
                 <form @submit.prevent="submit" class="p-4">
                     <div>
                         <InputLabel for="name" value="Name" />
-
                         <TextInput
                             id="name"
                             type="text"

@@ -22,7 +22,7 @@ class SkillController extends Controller
      */
     public function create()
     {
-        $specializations = Specialization::all(); // Ambil semua specialization
+        $specializations = Specialization::all(); 
         return inertia('Skills/create', [
             'specializations' => $specializations
         ]);
