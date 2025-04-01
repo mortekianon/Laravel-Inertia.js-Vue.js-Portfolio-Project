@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -20,7 +22,10 @@ class SkillController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Skills/create');
+        $specializations = Specialization::all(); // Ambil semua specialization
+        return inertia('Skills/create', [
+            'specializations' => $specializations
+        ]);
     }
 
     /**
@@ -28,7 +33,25 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:255|unique:skills,name',
+            'image' => 'required|image',
+            'specialization_id' => 'required|exists:specializations,id'
+
+        ]);
+        if($request->hasFile('image')){
+            $image = $request->file('image')->store('skills');
+
+            $skill = Skill::create([
+                'name' => $validated['name'],
+                'image' => $image
+            ]);
+
+            $skill->specializations()->attach($validated['specialization_id']);
+
+            return redirect()->route('skills.index')->with('success', 'Skill successfully added!');
+        }
+        return redirect()->route('skills.index');
     }
 
     /**
