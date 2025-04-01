@@ -16,7 +16,7 @@ class SkillController extends Controller
     public function index()
     {
         $skills = SkillResource::collection(Skill::with('specializations')->get());
-    return Inertia::render('Skills/index', compact('skills'));
+        return Inertia::render('Skills/index', compact('skills'));
     }
 
     /**

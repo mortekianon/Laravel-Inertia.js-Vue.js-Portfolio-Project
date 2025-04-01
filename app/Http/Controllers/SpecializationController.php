@@ -7,6 +7,7 @@ use App\Models\Specialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Ramsey\Uuid\Type\Integer;
 
 class SpecializationController extends Controller
 {
@@ -53,9 +54,9 @@ class SpecializationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Specialization $specialization)
     {
-        //
+        return Inertia::render('Specializations/edit', compact('specialization'));
     }
 
     /**
