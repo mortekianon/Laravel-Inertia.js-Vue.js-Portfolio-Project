@@ -62,16 +62,23 @@ class SpecializationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Specialization $specialization)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:255',
+        ]);
+        $specialization->update($validated);
+
+        return redirect()->route('specializations.index')->with('success', 'Specialization successfully updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Specialization $specialization)
     {
-        //
+        $specialization->delete();
+
+        return redirect()->back();
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Resources\SkillResource;
 use App\Models\Skill;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class SkillController extends Controller
@@ -67,17 +68,35 @@ class SkillController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Skill $skill)
     {
-        //
+        $specializations = Specialization::all();
+        return Inertia::render('Skills/edit', [
+            'skill' => $skill,
+            'specializations' => $specializations, 
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Skill $skill)
     {
-        //
+        $image = $skill->image;
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:255',
+        ]);
+        if($request->hasFile('image')){
+            Storage::delete($skill->image);
+            $image = $request->file('image')->store('skills');
+        };
+
+        $skill->update([
+            'name' => $validated['name'],
+            'image' =>  $image,
+        ]);
+
+        return redirect()->route('skills.index')->with('success', 'Skill successfully updated!');
     }
 
     /**
