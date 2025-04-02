@@ -82,13 +82,22 @@ class SpecializationController extends Controller
         $skills = $specialization->skills;
         $specialization->skills()->detach();
         $specialization->delete();
+
         foreach ($skills as $skill) {
+            $skill->load('specializations'); 
+            $projects = $skill->projects; 
+
             if ($skill->specializations->count() === 0) { 
                 $skill->delete(); 
+                foreach ($projects as $project) { 
+                    $project->load('skills'); 
+                    if ($project->skills->count() === 0) {
+                        Storage::delete($project->image); 
+                        $project->delete(); 
+                    }
+                }
+            }
         }
         return redirect()->back();
     }
-
-    }
-
 }

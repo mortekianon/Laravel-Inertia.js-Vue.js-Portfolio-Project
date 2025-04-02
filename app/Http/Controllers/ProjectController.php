@@ -6,6 +6,7 @@ use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class ProjectController extends Controller
@@ -70,24 +71,45 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        $skills = Skill::all();
+        return Inertia::render('Projects/edit', compact('project', 'skills'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $image = $project->image;
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:255',
+            'project_url' => 'required|string|min:3|',
+            'skill_id' => 'required'
+        ]);
+        if($request->hasFile('image')){
+            Storage::delete($project->image);
+            $image = $request->file('image')->store('projects');
+        };
+
+        $project->update([
+            'name' => $validated['name'],
+            'project_url' => $validated['project_url'],
+            'image' =>  $image,
+        ]);
+
+        $project->skills()->sync($validated['skill_id']);
+
+        return redirect()->route('projects.index')->with('success', 'Project successfully updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        Storage::delete($project->image);
+        $project->delete();
     }
 }

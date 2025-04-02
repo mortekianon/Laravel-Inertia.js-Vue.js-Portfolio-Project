@@ -104,11 +104,25 @@ class SkillController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Skill $skill)
-    {
+{
 
-        Storage::delete($skill->image);
-        $skill->delete();
+    Storage::delete($skill->image);
+    $projects = $skill->projects;
 
-        return redirect()->back();
+    $skill->projects()->detach();
+    $skill->delete();
+   
+    foreach ($projects as $project) {
+        $project->load('skills'); 
+
+        if ($project->skills->count() === 0) { 
+            Storage::delete($project->image); 
+            $project->delete();
+        }
     }
+
+    return redirect()->back();
+}
+
+
 }
