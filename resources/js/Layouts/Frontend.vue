@@ -1,4 +1,5 @@
 <script setup>
+import Footer from "@/Components/Footer.vue";
 import Header from "@/Components/Header.vue";
 </script>
 <template>
@@ -8,6 +9,7 @@ import Header from "@/Components/Header.vue";
         <main class="min-h-screen">
             <slot />
         </main>
+        <Footer />
         <!-- FOOTER -->
     </div>
 </template>
