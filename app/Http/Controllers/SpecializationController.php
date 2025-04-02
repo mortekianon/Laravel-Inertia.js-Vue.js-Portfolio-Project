@@ -6,6 +6,7 @@ use App\Http\Resources\SpecializationResource;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Ramsey\Uuid\Type\Integer;
 
@@ -77,8 +78,17 @@ class SpecializationController extends Controller
      */
     public function destroy(Specialization $specialization)
     {
-        $specialization->delete();
 
+        $skills = $specialization->skills;
+        $specialization->skills()->detach();
+        $specialization->delete();
+        foreach ($skills as $skill) {
+            if ($skill->specializations->count() === 0) { 
+                $skill->delete(); 
+        }
         return redirect()->back();
     }
+
+    }
+
 }

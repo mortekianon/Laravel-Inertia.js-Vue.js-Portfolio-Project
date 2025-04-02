@@ -37,7 +37,7 @@ class SkillController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|min:3|max:255|unique:skills,name',
+            'name' => 'required|string|min:3|max:255',
             'image' => 'required|image',
             'specialization_id' => 'required|exists:specializations,id'
 
@@ -103,8 +103,12 @@ class SkillController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Skill $skill)
     {
-        //
+
+        Storage::delete($skill->image);
+        $skill->delete();
+
+        return redirect()->back();
     }
 }
