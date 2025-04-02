@@ -29,6 +29,12 @@
                                 {{ specialization.name }}
                             </option>
                         </select>
+                        <p
+                            v-if="form.specialization_id === ''"
+                            class="text-red-500 text-sm mt-2"
+                        >
+                            Specialization is required.
+                        </p>
                     </div>
                     <div>
                         <InputLabel for="name" value="Name" />

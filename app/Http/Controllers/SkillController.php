@@ -70,11 +70,9 @@ class SkillController extends Controller
      */
     public function edit(Skill $skill)
     {
+
         $specializations = Specialization::all();
-        return Inertia::render('Skills/edit', [
-            'skill' => $skill,
-            'specializations' => $specializations, 
-        ]);
+        return Inertia::render('Skills/edit', compact('skill', 'specializations'));
     }
 
     /**
@@ -85,6 +83,7 @@ class SkillController extends Controller
         $image = $skill->image;
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:255',
+            'specialization_id' => 'required'
         ]);
         if($request->hasFile('image')){
             Storage::delete($skill->image);
@@ -95,6 +94,8 @@ class SkillController extends Controller
             'name' => $validated['name'],
             'image' =>  $image,
         ]);
+
+        $skill->specializations()->sync($validated['specialization_id']);
 
         return redirect()->route('skills.index')->with('success', 'Skill successfully updated!');
     }
