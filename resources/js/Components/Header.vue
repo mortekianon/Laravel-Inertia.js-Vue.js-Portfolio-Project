@@ -14,7 +14,8 @@ const showMobileMenu = ref("false");
             >
                 <span
                     class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-                    >mortekianond.</span
+                >
+                    @mortekianond</span
                 >
             </a>
             <button
