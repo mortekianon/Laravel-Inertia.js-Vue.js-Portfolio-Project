@@ -3,7 +3,7 @@
 <template>
     <section
         id="home"
-        class="lg:h-[80vh] flex items-center bg-ligh-primary dark:bg-dark-primary py-32 lg:py-0 overflow-hidden"
+        class="lg:h-[100vh] flex items-center bg-ligh-primary dark:bg-dark-primary py-32 lg:py-0 overflow-hidden"
     >
         <div class="container mx-auto h-full">
             <div class="flex flex-col md:flex-row items-center h-full pt-8">
