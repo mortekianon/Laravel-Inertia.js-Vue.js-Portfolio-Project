@@ -22,7 +22,6 @@
                         target="_blank"
                         class="pt-4 pb-6 md:pt-6 md:pb-12 max-w-[480px] text-lg text-center lg:text-left hover:text-white"
                     >
-                        Built with Vue.Js and Inertia.Js
                     </a>
                     <button
                         class="btn btn-md bg-accent hover:bg-light-secondary hover:text-black md:btn-lg transition-all mt-1 rounded-lg"
