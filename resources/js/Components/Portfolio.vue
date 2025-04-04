@@ -28,6 +28,5 @@ defineProps({
             :skills="skills"
             :projects="projects"
         />
-        <Projects :skills="skills" :projects="projects" />
     </section>
 </template>
