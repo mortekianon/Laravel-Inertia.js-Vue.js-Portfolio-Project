@@ -28,6 +28,9 @@
                     >
                         Work with me
                     </button>
+                    <div class="pt-12">
+                        <div class="flex items-center mb-6"></div>
+                    </div>
                 </div>
                 <div
                     class="flex flex-1 justify-end items-center h-full mt-8 md:mt-0"
