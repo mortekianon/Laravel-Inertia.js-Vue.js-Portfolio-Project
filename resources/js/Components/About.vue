@@ -40,7 +40,7 @@
                         </p>
                     </div>
                     <a
-                        href=""
+                        href="#contact"
                         class="btn btn-md bg-accent text-slate-200 rounded-lg"
                         >Contact me</a
                     >

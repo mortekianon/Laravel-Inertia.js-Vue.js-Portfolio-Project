@@ -79,7 +79,8 @@ function closeModal() {
                     <div class="pt-12">
                         <div class="flex items-center mb-6">
                             <a
-                                href=""
+                                href="https://www.instagram.com/mortekianond/"
+                                target="_blank"
                                 class="w-8 h-8 rounded-full flex items-center justify-center border-dark text-dark hover:bg-light-secondary hover:border-light-secondary dark:hover:bg-secondary dark:hover:border-secondary mr-3 sm:mr-4"
                             >
                                 <svg
@@ -94,7 +95,8 @@ function closeModal() {
                                 </svg>
                             </a>
                             <a
-                                href=""
+                                href="https://github.com/mortekianon"
+                                target="_blank"
                                 class="w-8 h-8 rounded-full flex items-center justify-center border-dark text-dark hover:bg-light-secondary hover:border-light-secondary dark:hover:bg-secondary dark:hover:border-secondary mr-3 sm:mr-4"
                             >
                                 <svg
@@ -109,7 +111,8 @@ function closeModal() {
                                 </svg>
                             </a>
                             <a
-                                href=""
+                                href="https://www.linkedin.com/in/mortekianonigel/"
+                                target="_blank"
                                 class="w-8 h-8 rounded-sm flex items-center justify-center border-dark text-dark hover:bg-light-secondary hover:border-light-secondary dark:hover:bg-secondary dark:hover:border-secondary mr-3 sm:mr-4"
                             >
                                 <svg

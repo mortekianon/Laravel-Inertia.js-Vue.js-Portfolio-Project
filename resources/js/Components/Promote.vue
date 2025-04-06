@@ -12,13 +12,13 @@
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:space-x-4 lg:mt-0">
             <a
-                href="#"
+                href="#portfolio"
                 class="mt-3 sm:mt-0 px-6 py-3 text-indigo-600 border border-indigo-600 hover:bg-indigo-100 rounded-lg text-lg font-medium shadow-md"
             >
                 Data Analytics
             </a>
             <a
-                href="#"
+                href="#portfolio"
                 class="mt-3 sm:mt-0 px-6 py-3 text-indigo-600 border border-indigo-600 hover:bg-indigo-100 rounded-lg text-lg font-medium shadow-md"
             >
                 Web Development
