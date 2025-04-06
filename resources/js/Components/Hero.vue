@@ -29,14 +29,12 @@ function closeModal() {
         <div class="container mx-auto h-full">
             <div class="flex flex-col md:flex-row items-center h-full pt-8">
                 <div class="flex-1 flex flex-col items-center lg:items-start">
-                    <p class="text-lg text-accent text-md mb-[22px]">
-                        mortekianond / portfolio /
-                    </p>
+                    <p class="text-lg text-accent text-md mb-[22px]"></p>
                     <h1
                         class="text-4xl leading-[44px] md:text-5xl md:leading-tight lg:text-7xl lg:leading-[1.2] font-bold md:tracking-[-2px]"
                     >
                         Web Development <br />
-                        & Data Analytics.
+                        & Data Analytics
                     </h1>
                     <a
                         href="https://github.com/mortekianon/Laravel-Inertia.js-Vue.js-Portfolio-Project"
@@ -130,11 +128,11 @@ function closeModal() {
                     </div>
                 </div>
                 <div
-                    class="flex flex-1 justify-end items-center h-full mt-8 md:mt-0"
+                    class="flex flex-1 justify-center items-center h-full mt-8 md:mt-0"
                 >
                     <img
-                        class="rounded-lg"
-                        src="http://127.0.0.1:8000/img/hero.png"
+                        class="rounded-full"
+                        src="http://127.0.0.1:8000/img/hero.jpeg"
                         alt="hero-img"
                     />
                 </div>
