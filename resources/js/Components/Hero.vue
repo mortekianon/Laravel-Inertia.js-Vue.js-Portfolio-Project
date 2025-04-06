@@ -1,9 +1,30 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import ModalContact from "./ModalContact.vue";
+
+const showModal = ref(false);
+function openModal() {
+    showModal.value = true;
+}
+function closeModal() {
+    showModal.value = false;
+}
+</script>
 
 <template>
     <section
         id="home"
-        class="lg:h-[100vh] flex items-center bg-ligh-primary dark:bg-dark-primary py-32 lg:py-0 overflow-hidden"
+        class="lg:h-[110vh] flex items-center bg-ligh-primary dark:bg-dark-primary py-32 lg:py-0 overflow-hidden"
+        v-motion="{
+            initial: {
+                y: 100,
+                opacity: 0,
+            },
+            visible: {
+                y: 0,
+                opacity: 1,
+            },
+        }"
     >
         <div class="container mx-auto h-full">
             <div class="flex flex-col md:flex-row items-center h-full pt-8">
@@ -24,10 +45,37 @@
                     >
                     </a>
                     <button
+                        @click="openModal"
                         class="btn btn-md bg-accent hover:bg-light-secondary hover:text-black md:btn-lg transition-all mt-1 rounded-lg"
                     >
                         Work with me
                     </button>
+
+                    <!-- MODAL -->
+                    <!-- Modal -->
+                    <div
+                        v-if="showModal"
+                        class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center"
+                        @click.self="closeModal"
+                    >
+                        <div
+                            class="bg-white dark:bg-dark-secondary p-6 rounded-lg w-full max-w-md shadow-lg relative"
+                        >
+                            <button
+                                @click="closeModal"
+                                class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-lg"
+                            >
+                                &times;
+                            </button>
+                            <h2 class="text-xl font-bold mb-4">
+                                Let's Work Together!
+                            </h2>
+                            <ModalContact />
+                        </div>
+                    </div>
+
+                    <!-- END MODAL -->
+
                     <div class="pt-12">
                         <div class="flex items-center mb-6">
                             <a

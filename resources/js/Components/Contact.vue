@@ -29,8 +29,24 @@ const submit = () => {
 </script>
 
 <template>
-    <section class="section bg-light-secondary dark:bg-dark-secondary">
-        <div class="container mx-auto">
+    <section
+        id="contact"
+        class="section bg-light-secondary dark:bg-dark-secondary"
+        tabindex="-1"
+    >
+        <div
+            class="container mx-auto"
+            v-motion="{
+                initial: {
+                    y: 100,
+                    opacity: 0,
+                },
+                visible: {
+                    y: 0,
+                    opacity: 1,
+                },
+            }"
+        >
             <div class="flex flex-col items-center text-center">
                 <h2 class="section-title">Contact Me</h2>
                 <p class="subtitle">
