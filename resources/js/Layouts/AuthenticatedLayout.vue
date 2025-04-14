@@ -57,6 +57,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Projects
                                 </NavLink>
+                                <NavLink
+                                    :href="route('news.halo')"
+                                    :active="route().current('news.halo')"
+                                >
+                                    News
+                                </NavLink>
                             </div>
                         </div>
 
